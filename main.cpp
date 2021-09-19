@@ -1,7 +1,9 @@
 #include <iostream>
 
-int main{
-        Lexer mylexer = new Lexer();
+int main(){
+
+
+ /*       Lexer mylexer = new Lexer();
         while(true) {
             Token tok = mylexer.getNextToken();
             if(tok == null) { // print error message break;   }
@@ -9,6 +11,6 @@ int main{
                 // else { // print token name and value
                 // (if your token doesn’t have a name, add logic to print value twice)
                  }
-             }
+             }*/
         return 0;
 }

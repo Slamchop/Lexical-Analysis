@@ -1,16 +1,31 @@
-Ok boys here's my thoughts:
-To limit the amount of memory required, we need to scan the file,
-seperate and store each individual token in order that they are scanned.
-Then Print them out with labeled based on their proper value.
-I think we should write a function that scans the file and identifies if
-something is a token or not, then copies each token into a fifo linked list
-to preserve the order they are in the file.
-LinkedList ScanFile(inputStream);
-Then we just need to write function that can identify the token type.
-TokenType Lexeme(Token);
-We then iterate through the linked list using the lexeme on each node and
-print the lexeme output and the token value from the linked list.
-Maybe write a class that defines what each token is otherwise we would
-just output a string such as "ID", "NUM", "REAL"...etc
-
-Test for Forked file into new branch
+(           (                       char>1>X        40
+)           )                       char>1>X        41
+*           *                       char>1>X        42
++           +                       char>1>X        43
+-           -                       char>1>X        45
+/           /                       char>1>X        47
+;           ;                       char>1>X        59
+{           {                       char>1>X        123
+}           }                       char>1>X        125
+<           <                       char>1> ~=      60
+=           =                       char>1> ~=      61
+>           >                       char>1> ~=      62
+AND         &&                      char>1>2>X      38,38
+EQ          ==                      char>1>2>X      61,61
+GE          >=                      char>1>2>X      62,61
+LE          <=                      char>1>2>X      60,61
+NE          !=                      char>1>2>X      33,61
+OR          ||                      char>1>2>X      124,124
+BASE_TYPE   int|float|bool          A>TB>WS
+BREAK       break                   A>T>WS
+IF          if                      A>T>WS
+DO          do                      A>T>WS
+ELSE        else                    A>T>WS
+FALSE       false                   A>T>WS
+FOR         for                     A>T>WS
+TRUE        true                    A>T>WS
+WHILE       while                   A>T>WS
+ID          [A-Za-z][A-Za-z0-9_]*   A>ID>~char|W
+NUM         [0-9]+                  N>~N||~.
+REAL        [0-9]+.[0-9]+           N>char          N>46
+EOF         EOF
