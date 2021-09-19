@@ -19,6 +19,8 @@ public:
     bool isTokenL1(string input);
     bool isTokenL2(string input);
     bool isToken3plus(string input);
+    bool isTerminal(string input);
+    bool isChar(string input);
 };
 
 

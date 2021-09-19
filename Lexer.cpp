@@ -35,4 +35,5 @@ bool isTokenL2(string input){
 //Needs to account for checking if "=" or "!=, >=,<=" by checking both pos.
 
 }
-bool isTokenL3plus(string input){}
+bool isTokenL3plus(string input){
+}

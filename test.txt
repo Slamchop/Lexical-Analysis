@@ -1,5 +1,5 @@
 N = Num, A = Letter, char = char
-Token       Value                                   ASCII       MinSpace  Done  f(x)
+Token       Value                    1stPos        ASCII       MinSpace   Done  f(x)
 (           (                       char>1>X        40          1           x   isTokenL1
 )           )                       char>1>X        41          1           x   isTokenL1
 *           *                       char>1>X        42          1           x   isTokenL1
