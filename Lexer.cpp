@@ -9,8 +9,12 @@ Token Lexer::Parse(string input){
             string T = "";
             for(int j=i;j<length;j++){
                 T = T+input[j];
-                if(T.length()==1){}
-                if(T.length()==2){}
+                if(T.length()==1){
+                    if(isTokenL1){Token temp(T,T); return temp;}
+                }
+                if(T.length()==2){
+                    if(isTokenL2(T)){Token temp(T,T); return temp;}
+                }
 
             }
         }
@@ -18,4 +22,13 @@ Token Lexer::Parse(string input){
 
 
 }
-bool isToken(string input){}
+
+bool isTokenL1(string input){
+    if(T>39 && T<44){return true;}
+    if(T==45||T==47||T==59||T==123||T==125)
+    {return true;}
+    return false;
+}
+bool isTokenL2(string input){
+
+}

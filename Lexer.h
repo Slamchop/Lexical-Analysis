@@ -7,6 +7,7 @@
 
 using namespace std;
 class Token{
+    Token(string V1, string V2){Type = V1; Value = V2;}
     string Type;
     string Value;
 };
@@ -15,9 +16,8 @@ class Lexer{
     friend Token;
 public:
     Token Parse(string input);
-
-private:
-    bool isToken(string input);
+    bool isTokenL1(string input);
+    bool isTokenL2(string input);
 };
 
 
