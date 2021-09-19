@@ -1,37 +1,37 @@
 N = Num, A = Letter, char = char
-Token       Value                                   ASCII       MinSpace
-(           (                       char>1>X        40          1
-)           )                       char>1>X        41          1
-*           *                       char>1>X        42          1
-+           +                       char>1>X        43          1
--           -                       char>1>X        45          1
-/           /                       char>1>X        47          1
-;           ;                       char>1>X        59          1
-{           {                       char>1>X        123         1
-}           }                       char>1>X        125         1
-<           <                       char>1> ~=      60          2
-=           =                       char>1> ~=      61          2
->           >                       char>1> ~=      62          2
-AND         &&                      char>1>2>X      38,38       2
-EQ          ==                      char>1>2>X      61,61       2
-GE          >=                      char>1>2>X      62,61       2
-LE          <=                      char>1>2>X      60,61       2
-NE          !=                      char>1>2>X      33,61       2
-OR          ||                      char>1>2>X      124,124     2
-ID          [A-Za-z][A-Za-z0-9_]*   A>ID>~char|W    65-90       2+
+Token       Value                                   ASCII       MinSpace  Done  f(x)
+(           (                       char>1>X        40          1           x   isTokenL1
+)           )                       char>1>X        41          1           x   isTokenL1
+*           *                       char>1>X        42          1           x   isTokenL1
++           +                       char>1>X        43          1           x   isTokenL1
+-           -                       char>1>X        45          1           x   isTokenL1
+/           /                       char>1>X        47          1           x   isTokenL1
+;           ;                       char>1>X        59          1           x   isTokenL1
+{           {                       char>1>X        123         1           x   isTokenL1
+}           }                       char>1>X        125         1           x   isTokenL1
+<           <                       char>1> ~=      60          2           x   isTokenL1
+=           =                       char>1> ~=      61          2           x   isTokenL1
+>           >                       char>1> ~=      62          2           x   isTokenL1
+AND         &&                      char>1>2>X      38,38       2               isTokenL2
+EQ          ==                      char>1>2>X      61,61       2               isTokenL2
+GE          >=                      char>1>2>X      62,61       2               isTokenL2
+LE          <=                      char>1>2>X      60,61       2               isTokenL2
+NE          !=                      char>1>2>X      33,61       2               isTokenL2
+OR          ||                      char>1>2>X      124,124     2               isTokenL2
+ID          [A-Za-z][A-Za-z0-9_]*   A>ID>~char|W    65-90       2+              isTokenL2+
                                                     97-122
                                                     48-57
-NUM         [0-9]+                  N>~N||~.        48-57       2+
-REAL        [0-9]+.[0-9]+           N>char          46,48-57    2+
+NUM         [0-9]+                  N>~N||~.        48-57       2+              isTokenL2+
+REAL        [0-9]+.[0-9]+           N>char          46,48-57    2+              isTokenL2+
 *may start with "." or "num"
-IF          if                      A>T>WS                      3
-DO          do                      A>T>WS                      3
-FOR         for                     A>T>WS                      4
-BASE_TYPE   int|float|bool          A>TB>WS                     4+
-TRUE        true                    A>T>WS                      5
-ELSE        else                    A>T>WS                      5
-FALSE       false                   A>T>WS                      6
-WHILE       while                   A>T>WS                      6
-BREAK       break                   A>T>WS                      6
+IF          if                      A>T>WS                      3               isToken3plus
+DO          do                      A>T>WS                      3               isToken3plus
+FOR         for                     A>T>WS                      4               isToken3plus
+BASE_TYPE   int|float|bool          A>TB>WS                     4+              isToken3plus
+TRUE        true                    A>T>WS                      5               isToken3plus
+ELSE        else                    A>T>WS                      5               isToken3plus
+FALSE       false                   A>T>WS                      6               isToken3plus
+WHILE       while                   A>T>WS                      6               isToken3plus
+BREAK       break                   A>T>WS                      6               isToken3plus
 
 EOF         EOF

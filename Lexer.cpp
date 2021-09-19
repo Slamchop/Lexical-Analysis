@@ -31,7 +31,8 @@ bool isTokenL1(string input){
     return false;
 }
 bool isTokenL2(string input){
-
-
+//Needs to account for any single letter followed by a white space or character. Is ID.
+//Needs to account for checking if "=" or "!=, >=,<=" by checking both pos.
 
 }
+bool isTokenL3plus(string input){}

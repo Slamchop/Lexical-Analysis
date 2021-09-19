@@ -18,6 +18,7 @@ public:
     Token Parse(string input);
     bool isTokenL1(string input);
     bool isTokenL2(string input);
+    bool isToken3plus(string input);
 };
 
 
