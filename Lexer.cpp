@@ -18,6 +18,7 @@ Token Lexer::Parse(string input){
 
             }
         }
+        i=j;
     }
 
 
@@ -30,5 +31,7 @@ bool isTokenL1(string input){
     return false;
 }
 bool isTokenL2(string input){
+
+
 
 }
