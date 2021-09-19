@@ -1,3 +1,5 @@
+N = Num, A = Letter, char = char
+Token       Value                                   ASCII       MinSpace
 (           (                       char>1>X        40          1
 )           )                       char>1>X        41          1
 *           *                       char>1>X        42          1
@@ -16,17 +18,20 @@ GE          >=                      char>1>2>X      62,61       2
 LE          <=                      char>1>2>X      60,61       2
 NE          !=                      char>1>2>X      33,61       2
 OR          ||                      char>1>2>X      124,124     2
-BASE_TYPE   int|float|bool          A>TB>WS                     4
-BREAK       break                   A>T>WS                      6
+ID          [A-Za-z][A-Za-z0-9_]*   A>ID>~char|W    65-90       2+
+                                                    97-122
+                                                    48-57
+NUM         [0-9]+                  N>~N||~.        48-57       2+
+REAL        [0-9]+.[0-9]+           N>char          46,48-57    2+
+*may start with "." or "num"
 IF          if                      A>T>WS                      3
 DO          do                      A>T>WS                      3
+FOR         for                     A>T>WS                      4
+BASE_TYPE   int|float|bool          A>TB>WS                     4+
+TRUE        true                    A>T>WS                      5
 ELSE        else                    A>T>WS                      5
 FALSE       false                   A>T>WS                      6
-FOR         for                     A>T>WS                      4
-TRUE        true                    A>T>WS                      5
 WHILE       while                   A>T>WS                      6
-ID          [A-Za-z][A-Za-z0-9_]*   A>ID>~char|W                2+
-NUM         [0-9]+                  N>~N||~.                    2+
-REAL        [0-9]+.[0-9]+           N>char          N>46        2+
-*may start with "." or "num"
+BREAK       break                   A>T>WS                      6
+
 EOF         EOF
