@@ -6,22 +6,29 @@
 #define INC_125PROJ_LEXER_H
 
 using namespace std;
-class Token{
-    Token(string V1, string V2){Type = V1; Value = V2;}
+
+class Token {
+public:
+    Token(string V1, string V2) {
+        Type = V1;
+        Value = V2;
+    }
+
     string Type;
     string Value;
 };
+    string getLabel(string input);
 
-class Lexer{
-    friend Token;
-public:
-    Token Parse(string input);
-    bool isTokenL1(string input);
-    bool isTokenL2(string input);
-    bool isToken3plus(string input);
-    bool isTerminal(string input);
-    bool isChar(string input);
-};
+    bool isTokenL1(string T, char N);
+
+    bool isTokenL2(string input, char N);
+
+    bool isToken3plus(string input, char N);
+
+    bool isDigit(char input);
+
+    bool isLetter(char input);
+
 
 
 #endif //INC_125PROJ_LEXER_H
