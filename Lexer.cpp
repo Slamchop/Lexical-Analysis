@@ -34,14 +34,14 @@ bool isLetter(char input){
     return false;
 };
 
-bool isTokenL1(string T, string N) {
+bool isTokenL1(string T, char N) {
 if(T[0]>39 && T[0]<44){return true;}
 if(T[0]==45||T[0]==47||T[0]==59||T[0]==123||T[0]==125)
 {return true;}
 return false;
 }
 
-bool isTokenL2(string input) {
+bool isTokenL2(string input, char N) {
 //Needs to account for any single letter followed by a white space or character. Is ID.
 //Needs to account for checking if "=" or "!=, >=,<=" by checking both pos.
 if(input=="!="||input=="<="||input==">="||input=="&&"||input=="||"){return true;}
@@ -49,6 +49,6 @@ if(input[1]==61){return true;}
 return false;
 }
 
-bool isTokenL3plus(string input) {
+bool isTokenL3plus(string input, char N) {
     return false;
 }
