@@ -20,12 +20,12 @@ int main() {
                         if(i< length-1){N=input[j+1];}else{N=32;}
                         T = T + input[j];
                         if (T.length() == 1) {
-                            if (isTokenL1(T)) {
+                            if (isTokenL1(T,N)) {
 
                             }
                         }
                         if (T.length() == 2) {
-                            if (isTokenL2(T)) {
+                            if (isTokenL2(T,N)) {
 
                             }
                         }
