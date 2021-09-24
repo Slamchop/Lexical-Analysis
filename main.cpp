@@ -18,15 +18,10 @@ int main() {
                     for (int j = i; j < length; j++) {
                         if(j< length-1){N=input[j+1];}else{N=32;}
                         T = T + input[j];
-                        if (T.length() == 1) {
-                            if (isTokenL1(T,N)) {cout<<getLabel(T)<<" "<<T<<endl;}
-                        }
-                        if (T.length() == 2) {
-                            if (isTokenL2(T,N)) {cout<<getLabel(T)<<" "<<T<<endl;}
-                        }
-                        if(T.length()>2){
-                            if(isTokenL3plus(T,N)){cout<<getLabel(T)<<" "<<T<<endl;}
-                        }
+                        //Check specifically for single length terminals.
+                        if (T.length() == 1) {if (isTokenL1(T,N)) {cout<<getLabel(T)<<" "<<T<<endl;}}
+                        if (T.length() == 2) {if (isTokenL2(T,N)) {cout<<getLabel(T)<<" "<<T<<endl;}}
+                        if (T.length()>2)  {if(isTokenL3plus(T,N)){cout<<getLabel(T)<<" "<<T<<endl;}}
                         i = j;
                     }
                 }

@@ -34,11 +34,22 @@ bool isLetter(char input){
     return false;
 };
 
+bool isChar(char input){
+    if(input>31 && input<48){return true;}
+    if(input>57 && input<65){return true;}
+    if(input>90 && input<95){return true;}
+    if(input == 96){return true;}
+    if(input>122){return true;}
+    return false;
+}
+//Checks a potential token of length 1, and compares to next value following it.
 bool isTokenL1(string T, char N) {
-if(T[0]>39 && T[0]<44){return true;}
-if(T[0]==45||T[0]==47||T[0]==59||T[0]==123||T[0]==125)
-{return true;}
-return false;
+if(T[0]>39 && T[0]<44){return true;}                                 //If T is "()*+-" return true
+if(T[0]==45||T[0]==47||T[0]==59||T[0]==123||T[0]==125){return true;} //If T is "- / ; { }" return true
+if(isLetter(T[0]) && isChar(N)){return true;}                  //If T is a Letter followed by a non letter return true;
+if(isDigit(T[0]) && (isDigit(N) || N==46)){return false;}      //if T is a digit followed by a non digit or not "." return true
+else{return true;}
+
 }
 
 bool isTokenL2(string input, char N) {

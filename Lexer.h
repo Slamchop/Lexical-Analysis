@@ -16,4 +16,6 @@ bool isDigit(char input);
 
 bool isLetter(char input);
 
+bool isChar(char input);
+
 #endif //INC_125PROJ_LEXER_H
