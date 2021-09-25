@@ -21,17 +21,17 @@ OR          ||                      char>1>2>X      124,124     2           x   
 ID          [A-Za-z][A-Za-z0-9_]*   A>ID>~char|W    65-90       2+              isTokenL2+
                                                     97-122
                                                     48-57
-NUM         [0-9]+                  N>~N||~.        48-57       2+              isTokenL2+
-REAL        [0-9]+.[0-9]+           N>char          46,48-57    2+              isTokenL2+
+NUM         [0-9]+                  N>~N||~.        48-57       2+          x   isTokenL2+
+REAL        [0-9]+.[0-9]+           N>char          46,48-57    2+          x   isTokenL2+
 *may start with "." or "num"
-IF          if                      A>T>WS                      3               isToken3plus
-DO          do                      A>T>WS                      3               isToken3plus
-FOR         for                     A>T>WS                      4               isToken3plus
-BASE_TYPE   int|float|bool          A>TB>WS                     4+              isToken3plus
-TRUE        true                    A>T>WS                      5               isToken3plus
-ELSE        else                    A>T>WS                      5               isToken3plus
-FALSE       false                   A>T>WS                      6               isToken3plus
-WHILE       while                   A>T>WS                      6               isToken3plus
-BREAK       break                   A>T>WS                      6               isToken3plus
+IF          if                      A>T>WS                      3           x   isToken3plus
+DO          do                      A>T>WS                      3           x   isToken3plus
+FOR         for                     A>T>WS                      4           x   isToken3plus
+BASE_TYPE   int|float|bool          A>TB>WS                     4+          x   isToken3plus
+TRUE        true                    A>T>WS                      5           x   isToken3plus
+ELSE        else                    A>T>WS                      5           x   isToken3plus
+FALSE       false                   A>T>WS                      6           x   isToken3plus
+WHILE       while                   A>T>WS                      6           x   isToken3plus
+BREAK       break                   A>T>WS                      6           x   isToken3plus
 
 EOF         EOF

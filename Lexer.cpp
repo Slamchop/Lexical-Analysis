@@ -71,5 +71,14 @@ return false;
 }
 
 bool isTokenL3plus(string input, char N) {
+    //If these terminals are followed by anything other than a letter Token found
+    string C[] = {"float","bool","true","else","false","while","break"};
+    for(int i=0;i<7;i++){if(input==C[i] && (isChar(N) || isDigit(N))){ return true;}}
+    //If a token starts with a digit, it has to end either with a Char or Letter
+    //Except for "."
+    if(isDigit(input[0]) && (isChar(N)||isLetter(N)) && N!=46){return true;}
+    //If token starts with a Letter and terminals have been ruled out. Potential ID
+    // ID Token must end with a char other than "_".
+    if(isLetter(input[0]) &&(isChar(N) && N!=95)){return true;}
     return false;
 }
