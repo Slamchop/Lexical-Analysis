@@ -9,9 +9,9 @@ Token       Value                    1stPos        ASCII       MinSpace   Done  
 ;           ;                       char>1>X        59          1           x   isTokenL1
 {           {                       char>1>X        123         1           x   isTokenL1
 }           }                       char>1>X        125         1           x   isTokenL1
-<           <                       char>1> ~=      60          2               isTokenL2
-=           =                       char>1> ~=      61          2               isTokenL2
->           >                       char>1> ~=      62          2               isTokenL2
+<           <                       char>1> ~=      60          2           x   isTokenL2
+=           =                       char>1> ~=      61          2           x   isTokenL2
+>           >                       char>1> ~=      62          2           x   isTokenL2
 AND         &&                      char>1>2>X      38,38       2           x   isTokenL2
 EQ          ==                      char>1>2>X      61,61       2           x   isTokenL2
 GE          >=                      char>1>2>X      62,61       2           x   isTokenL2
