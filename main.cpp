@@ -9,6 +9,7 @@ int main() {
         if(tok.data=="EOF"){break;}
         else{cout<<tok.Class<<" "<<tok.data<<endl;}
     }
-
+    string x;
+cin >> x;
     return 0;
 }
