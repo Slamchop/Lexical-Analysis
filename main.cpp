@@ -5,9 +5,9 @@ int main() {
 
     Lexer* myLexer = new Lexer();
     while(true){
-        Token tok(myLexer->getNextToken());
+        Token tok = myLexer->getNextToken();
         if(tok.data=="EOF"){break;}
-        else{cout<<getLabel(tok.data)<<" "<<tok.data<<endl;}
+        else{cout<<tok.Class<<" "<<tok.data<<endl;}
     }
 
     return 0;

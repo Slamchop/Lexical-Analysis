@@ -27,8 +27,8 @@ int linked_list::listSize(){
     return count;
 }
 
-void linked_list::push(string input){
-    Token* temp = new Token(input);
+void linked_list::push(string input, string Class){
+    Token* temp = new Token(input, Class);
     if(isEmpty()){head = tail =temp;}
     else
     if(listSize()==1){
@@ -43,14 +43,12 @@ void linked_list::push(string input){
         tail->next = NULL;
     }
 }
-string linked_list::pop(){
-    if(isEmpty()){return NULL;}
+void linked_list::pop(){
     string tok;
     if(head){tok = head->data;}
     Token* temp =head;
     head = temp->next;
     delete temp;
-    return tok;
 };
 
 Lexer::Lexer(){
@@ -74,18 +72,15 @@ Lexer::Lexer(){
                         T = T + input[j];
                         //Check specifically for single length terminals.
                         if (T.length() == 1) {if (isTokenL1(T,N)) {
-                            List->push(T); i=j; j=length;
-                            //cout<<getLabel(T)<<" "<<T<<endl;i = j; j=length;
+                            List->push(T, getLabel(T)); i=j; j=length;
                             }}
                         else
                         if (T.length() == 2) {if (isTokenL2(T,N)) {
-                                List->push(T); i=j; j=length;
-                            //cout<<getLabel(T)<<" "<<T<<endl;i = j; j=length;
+                                List->push(T, getLabel(T)); i=j; j=length;
                              }}
                         else
                         if (T.length() > 2){if(isTokenL3plus(T,N)){
-                                List->push(T); i=j; j=length;
-                            //cout<<getLabel(T)<<" "<<T<<endl;i = j; j=length;
+                                List->push(T, getLabel(T)); i=j; j=length;
                             }}
                     }
                 }
@@ -93,11 +88,13 @@ Lexer::Lexer(){
         }
     }
     myFile.close();
-    List->push("EOF");
+    List->push("EOF"," ");
 
 }
-string Lexer::getNextToken() {
-    return List->pop();
+Token Lexer::getNextToken() {
+    Token tok(List->head->data, List->head->Class);
+    List->pop();
+    return tok;
 }
 
 //Checks a potential token of length 1, and compares to next value following it.
@@ -148,33 +145,42 @@ bool Lexer::isTokenL3plus(string input, char N) {
 
 string getLabel(string input){
     string C[] = {"(",")","*","+","-","/",";","{","}","<","=",">"};
-    string E[][2] = {{"&&","AND"},{"==","EQ"},{">=","GE"},{"<=","LE"},{"!=","NE"},{"||","OR"},
-                     {"if","IF"},{"do","DO"},{"for","FOR"},{"true","TRUE"},{"else","ELSE"},{"false","FALSE"},
-                     {"while","WHILE"},{"break","BREAK"}, {"int","BASE_TYPE"}, {"float","BASE_TYPE"}
-            ,{"bool","BASE_TYPE"}};
+
+    string E[][2] = {
+            {"&&","AND"},{"==","EQ"},{">=","GE"},{"<=","LE"},{"!=","NE"},{"||","OR"},
+            {"if","IF"},{"do","DO"},{"for","FOR"},{"true","TRUE"},{"else","ELSE"},{"false","FALSE"},
+            {"while","WHILE"},{"break","BREAK"}, {"int","BASE_TYPE"}, {"float","BASE_TYPE"},
+            {"bool","BASE_TYPE"}
+    };
 
     for(int i=0;i<12;i++) { if (input == C[i]) { return C[i]; }}
+
     for (int i = 0; i < 17; i++) { if(input == E[i][0]){ return E[i][1]; } }
-    if (isLetter(input[0])) { return "ID"; }
+    //If Token is
     if(isDigit(input[0])||input[0]==46){
-        for(int i=0; i<input.length();i++)
-        { if(input[i]==46){return"REAL";}}
-        return"NUM";
-    }
-    if(isLetter(input[0])){return "ID";}
+        for(int i=0; i<input.length();i++){
+            if(isChar(input[i]) && input[i] != 46){return "ERROR";}
+            if(input[i]==46){return"REAL";}}
+        return"NUM";}
+    //If Token is comprised of only Letters, Digits and Underscore return ID
+    if(isLetter(input[0])){
+        for(int i=0;i<input.length();i++){if(isChar(input[i]) && input[i] != 95){return "ERROR";}}
+        return "ID";}
+
     return "ERROR";
 }
+//Checks if Input is a Letter
 bool isDigit(char input) {
     if(input>47 && input <58){return true;}
     return false;
 }
-
+//Checks if input is a Letter
 bool isLetter(char input){
     if(input>64 && input<91){return true;}
     if(input>96 && input<123){return true;}
     return false;
 };
-
+//Checks if input is anything other than a Digit or Letter
 bool isChar(char input){
     if(input>31 && input<48){return true;}
     if(input>57 && input<65){return true;}
